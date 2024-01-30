@@ -10,7 +10,7 @@
 #define firebHost "https://exemple.firebaseio.com/"
 #define API_KEY "PDjeifPEKFOdt_PDjeifPEKFOdt-uYTRaxy_YOP"
 
-activate = "0";
+activate = 0;
 
 FirebaseData fbdo;
 FirebaseAuth auth;
@@ -80,12 +80,12 @@ void loop() {
 }
 
 void SendData() {
-  if(Firebase.RTDB.getString(&fbdo, "/WOL")) {
+  if(Firebase.RTDB.getInt(&fbdo, "/WOL")) {
     //Serial.println("Successful Read from " + fbdo.dataPath() + ": " + activate + " (" + fbdo.dataType() + ")");    
-    if(fbdo.dataType() == "string") {
-      activate = fbdo.stringData();
+    if(fbdo.dataType() == "int") {
+      activate = fbdo.intData();
       //Serial.println("Successful Read from " + fbdo.dataPath() + ": " + activate + " (" + fbdo.dataType() + ")");
-      if (activate == "1"){        
+      if (activate == 1){        
         //Send WOL
         WOL.sendMagicPacket(MACAddress, 7);
 
@@ -93,10 +93,10 @@ void SendData() {
         Serial.println("Sent");
 
         //Reset value
-        activate = "0";
+        activate = 0;
 
         //Set new Data (Send new Values)
-        if(Firebase.RTDB.setString(&fbdo, "/WOL", activate)) {
+        if(Firebase.RTDB.setInt(&fbdo, "/WOL", activate)) {
           //Serial.println(); Serial.print(activate);
           //Serial.println(" - successfully saved to: " + fbdo.dataPath());
         }
