@@ -1,9 +1,20 @@
 # WOL_Arduino_Firebase
- Wake On Lan with Firebase and ESP32
+Wake On Lan with Firebase and ESP32
 
-This is a code to use your arduino to turn your pc on, using and Firebase database.
-To use it just modify the script with the following information and you can already upload it to your ESP32 (I didn't have an ESP8266, so I don't test it, but should work).
-The info you'll need is: Your WIFI name and password, your firebase database link (I'll not explain here how to create a firebase project), your firebase API key project and your MAC Address.
-Just open the .ino and find the variables you need to change, the names are the same or similar.
-Once uploaded to your ESP32, just access your database and change the activate string to 1, and enjoy it.
-OBS: I use a string because I want to use AppInventor to access my database with my Phone, and the app don't let me use an int.
+Explaination:
+This code is to turn your pc on using an arduino and the Firebase database.
+To use it just modify the script with the following information and you can already upload it to your ESP32 (I didn't have an ESP8266, so I didn't test it, but it should work).
+The info you'll need is:
+
+ssid: Your WiFi name.
+password: Self-explanatory.
+firebHost: Your firebase database link (I'll not explain here how to create a firebase project).
+API_KEY: Your firebase API key project.
+MACAddress: Self-explanatory.
+
+Just open the .ino file, find the variables and change it.
+Once uploaded to your ESP32, just access your database and change the "activate" (or whatever name you use it) string to "1", and the magic package is sent.
+
+Notes:
+Keep in mind you have to keep your PC connected to a power source and have it turned on at least once, otherwise the magic packet won't work.
+OBS: I used a string because I wanted to use AppInventor to access my database with my Phone, and the program don't let me use an int.
